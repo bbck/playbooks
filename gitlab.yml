@@ -1,0 +1,9 @@
+---
+
+- hosts: gitlab
+  remote_user: chris
+  become: yes
+
+  roles:
+    - common
+    - gitlab
