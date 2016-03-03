@@ -1,4 +1,3 @@
 ---
 
-- name: Install packages
-  package: name=vim state=latest
+- include: packages.yml
