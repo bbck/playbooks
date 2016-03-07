@@ -1,12 +1,15 @@
 ---
 
-- name: Install packages
+- name: refresh apt cache
+  apt: update_cache=yes
+
+- name: install common packages
   package: name={{ item }} state=latest
   with_items:
     - apt-transport-https
     - vim
 
-- name: Remove packages
+- name: remove common packages
   package: name={{ item }} state=absent
   with_items:
     - puppet
