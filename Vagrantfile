@@ -16,6 +16,7 @@ Vagrant.configure(2) do |config|
       role.vm.provision "ansible" do |ansible|
         ansible.playbook = file
         ansible.verbose = "v"
+        ansible.ask_vault_pass = true
       end
     end
   end
