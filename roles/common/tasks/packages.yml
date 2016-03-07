@@ -5,3 +5,9 @@
   with_items:
     - apt-transport-https
     - vim
+
+- name: Remove packages
+  package: name={{ item }} state=absent
+  with_items:
+    - puppet
+    - puppet-common
