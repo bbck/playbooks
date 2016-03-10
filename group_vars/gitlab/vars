@@ -1,0 +1,4 @@
+---
+
+ses_access_key: "{{ vault_ses_access_key }}"
+ses_secret_key: "{{ vault_ses_secret_key }}"

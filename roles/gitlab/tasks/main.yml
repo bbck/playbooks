@@ -1,8 +1,5 @@
 ---
 
-- name: include encrypted aws keys
-  include_vars: aws.yml
-
 - name: add gitlab package signing key
   apt_key: id=E15E78F4 url=https://packages.gitlab.com/gpg.key
 
