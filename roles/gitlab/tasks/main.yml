@@ -13,3 +13,8 @@
   template: src=gitlab.rb.j2 dest=/etc/gitlab/gitlab.rb owner=root group=root mode=0600
   notify:
     - reconfigure gitlab
+
+- name: write gitlab secrets file
+  template: src=gitlab-secrets.json.j2 dest=/etc/gitlab/gitlab-secrets.json owner=root group=root mode=0600
+  notify:
+    - reconfigure gitlab
