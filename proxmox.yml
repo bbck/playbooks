@@ -1,0 +1,9 @@
+---
+
+- hosts: proxmox
+  remote_user: chris
+  become: yes
+
+  roles:
+    - common
+    - proxmox

@@ -1,3 +1,4 @@
 ---
 
+- include: proxmox.yml
 - include: gitlab.yml

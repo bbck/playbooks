@@ -1,2 +1,5 @@
+[proxmox]
+pve.bbck.net
+
 [gitlab]
 git.bbck.net
