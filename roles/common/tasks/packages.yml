@@ -8,9 +8,3 @@
   with_items:
     - apt-transport-https
     - vim
-
-- name: remove common packages
-  package: name={{ item }} state=absent
-  with_items:
-    - puppet
-    - puppet-common
