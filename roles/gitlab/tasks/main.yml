@@ -18,3 +18,6 @@
   template: src=gitlab-secrets.json.j2 dest=/etc/gitlab/gitlab-secrets.json owner=root group=root mode=0600
   notify:
     - reconfigure gitlab
+
+- name: crontab entry for gitlab backup
+  cron: name="gitlab backup" minute=0 hour=5 user=root job="/opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1"

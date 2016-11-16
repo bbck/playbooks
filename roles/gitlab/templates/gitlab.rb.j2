@@ -11,5 +11,13 @@ gitlab_rails['smtp_password'] = "{{ses_secret_key}}"
 gitlab_rails['smtp_domain'] = "bbck.net"
 gitlab_rails['smtp_authentication'] = "login"
 gitlab_rails['smtp_tls'] = true
+gitlab_rails['backup_keep_time'] = 604800
+gitlab_rails['backup_upload_connection'] = {
+  'provider' => 'AWS',
+  'region' => 'us-east-1',
+  'aws_access_key_id' => '{{ses_access_key}}',
+  'aws_secret_access_key' => '{{ses_secret_key}}'
+}
+gitlab_rails['backup_upload_remote_directory'] = 'bbck-gitlab'
 
 nginx['redirect_http_to_https'] = true
