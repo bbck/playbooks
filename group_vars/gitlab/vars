@@ -1,7 +1,7 @@
 ---
 
-ses_access_key: "{{ vault_ses_access_key }}"
-ses_secret_key: "{{ vault_ses_secret_key }}"
+aws_access_key: "{{ vault_aws_access_key }}"
+aws_secret_key: "{{ vault_aws_secret_key }}"
 
 gitlab_workhorse_secret_token: "{{ vault_gitlab_workhorse_secret_token }}"
 gitlab_shell_secret_token: "{{ vault_gitlab_shell_secret_token }}"
