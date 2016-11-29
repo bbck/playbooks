@@ -1,0 +1,9 @@
+---
+
+- hosts: plex
+  remote_user: chris
+  become: yes
+
+  roles:
+    - common
+    - plex
