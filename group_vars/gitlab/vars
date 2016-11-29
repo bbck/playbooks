@@ -2,6 +2,8 @@
 
 aws_access_key: "{{ vault_aws_access_key }}"
 aws_secret_key: "{{ vault_aws_secret_key }}"
+smtp_access_key: "{{ vault_smtp_access_key }}"
+smtp_secret_key: "{{ vault_smtp_secret_key }}"
 
 gitlab_workhorse_secret_token: "{{ vault_gitlab_workhorse_secret_token }}"
 gitlab_shell_secret_token: "{{ vault_gitlab_shell_secret_token }}"
