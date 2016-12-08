@@ -1,10 +1,19 @@
 ---
 
 - name: refresh apt cache
-  apt: update_cache=yes cache_valid_time=3600
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: enable jessie-backports
+  apt_repository:
+    repo: deb http://debian.csail.mit.edu/debian/ jessie-backports main
+    state: present
 
 - name: install common packages
-  package: name={{ item }} state=latest
+  package:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - apt-transport-https
     - vim
