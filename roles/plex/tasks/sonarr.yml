@@ -1,0 +1,48 @@
+---
+
+- name: add mono package signing key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: D3D831EF
+
+- name: install mono repository
+  apt_repository:
+    repo: deb https://download.mono-project.com/repo/debian wheezy main
+
+- name: install second mono repository needed for debian 8
+  apt_repository:
+    repo: deb https://download.mono-project.com/repo/debian wheezy-libjpeg62-compat main
+
+- name: install mono
+  package:
+    name: libmono-cil-dev
+    state: latest
+
+- name: add sonarr package signing key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: FDA5DFFC
+
+- name: install sonarr repository
+  apt_repository:
+    repo: deb http://apt.sonarr.tv/ master main
+
+- name: install sonarr
+  package:
+    name: nzbdrone
+    state: latest
+
+- name: copy sonarr init script
+  copy:
+    src: files/nzbdrone-init.sh
+    dest: /etc/init.d/nzbdrone
+    mode: '755'
+
+# Disabled due to issue using sysvinit when systemd is available
+# https://github.com/ansible/ansible-modules-core/issues/915
+# - name: start and enable sonarr
+#   service:
+#     name: nzbdrone
+#     pattern: NzbDrone.exe
+#     enabled: yes
+#     state: started

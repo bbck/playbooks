@@ -1,20 +1,4 @@
 ---
 
-- name: add plex package signing key
-  apt_key: id=521D8275 url=http://shell.ninthgate.se/packages/shell.ninthgate.se.gpg.key
-
-- name: install plex community repository
-  apt_repository: repo='deb http://shell.ninthgate.se/packages/debian jessie main'
-
-- name: install plex
-  package: name=plexmediaserver state=latest
-
-- name: install java for filebot
-  apt:
-    name: default-jre
-    state: latest
-    default_release: jessie-backports
-
-- name: install filebot
-  apt:
-    deb: https://app.filebot.net/download.php?type=deb&arch=amd64&version=4.7.7 
+- include: plex.yml
+- include: sonarr.yml
