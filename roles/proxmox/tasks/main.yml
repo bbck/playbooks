@@ -1,7 +1,10 @@
 ---
 
 - name: add proxmox package signing key
-  apt_key: id=9887F95A url=http://download.proxmox.com/debian/key.asc
+  apt_key:
+    id: 9887F95A
+    url: http://download.proxmox.com/debian/key.asc
 
 - name: install proxmox repository
-  apt_repository: repo='deb http://download.proxmox.com/debian jessie pve-no-subscription'
+  apt_repository:
+    repo: deb http://download.proxmox.com/debian jessie pve-no-subscription

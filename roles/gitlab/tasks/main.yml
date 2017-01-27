@@ -1,23 +1,43 @@
 ---
 
 - name: add gitlab package signing key
-  apt_key: id=E15E78F4 url=https://packages.gitlab.com/gpg.key
+  apt_key:
+    id: E15E78F4
+    url: https://packages.gitlab.com/gpg.key
 
 - name: install gitlab repository
-  apt_repository: repo='deb https://packages.gitlab.com/gitlab/gitlab-ce/debian jessie main'
+  apt_repository:
+    repo: deb https://packages.gitlab.com/gitlab/gitlab-ce/debian jessie main
 
 - name: install gitlab
-  package: name=gitlab-ce state=latest
+  package:
+    name: gitlab-ce
+    state: latest
 
 - name: write gitlab configuration file
-  template: src=gitlab.rb.j2 dest=/etc/gitlab/gitlab.rb owner=root group=root mode=0600
+  template:
+    src: gitlab.rb.j2
+    dest: /etc/gitlab/gitlab.rb
+    owner: root
+    group: root
+    mode: '0600'
   notify:
     - reconfigure gitlab
 
 - name: write gitlab secrets file
-  template: src=gitlab-secrets.json.j2 dest=/etc/gitlab/gitlab-secrets.json owner=root group=root mode=0600
+  template:
+    src: gitlab-secrets.json.j2
+    dest: /etc/gitlab/gitlab-secrets.json
+    owner: root
+    group: root
+    mode: '0600'
   notify:
     - reconfigure gitlab
 
 - name: crontab entry for gitlab backup
-  cron: name="gitlab backup" minute=0 hour=5 user=root job="/opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1"
+  cron:
+    name: gitlab backup
+    minute: '0'
+    hour: '5'
+    user: root 
+    job: /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1

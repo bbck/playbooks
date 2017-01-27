@@ -1,13 +1,18 @@
 ---
 
 - name: add plex package signing key
-  apt_key: id=521D8275 url=http://shell.ninthgate.se/packages/shell.ninthgate.se.gpg.key
+  apt_key:
+    id: 521D8275
+    url: http://shell.ninthgate.se/packages/shell.ninthgate.se.gpg.key
 
 - name: install plex community repository
-  apt_repository: repo='deb http://shell.ninthgate.se/packages/debian jessie main'
+  apt_repository:
+    repo: deb http://shell.ninthgate.se/packages/debian jessie main
 
 - name: install plex
-  package: name=plexmediaserver state=latest
+  package:
+    name: plexmediaserver
+    state: latest
 
 - name: install java for filebot
   apt:
