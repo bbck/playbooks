@@ -6,3 +6,7 @@ git.bbck.net
 
 [plex]
 plex.bbck.net
+
+[kube-master]
+rpi-master.bbck.net
+rpi-node01.bbck.net

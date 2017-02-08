@@ -1,0 +1,20 @@
+---
+
+- name: add kubernetes package signing key
+  apt_key:
+    id: A7317B0F
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+- name: install kubernetes repository
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+
+- name: install kubernetes packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - kubelet
+    - kubeadm
+    - kubectl
+    - kubernetes-cni

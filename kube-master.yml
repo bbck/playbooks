@@ -1,0 +1,8 @@
+---
+
+- hosts: kube-master
+  remote_user: chris
+  become: yes
+
+  roles:
+    - kube-master

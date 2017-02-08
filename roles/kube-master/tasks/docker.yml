@@ -1,0 +1,15 @@
+---
+
+- name: add docker package signing key
+  apt_key:
+    id: 2C52609D
+    url: https://yum.dockerproject.org/gpg
+
+- name: install docker repository
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo/ raspbian-jessie main
+
+- name: install docker
+  package:
+    name: docker-engine=1.12.6-0~raspbian-jessie
+    state: present
