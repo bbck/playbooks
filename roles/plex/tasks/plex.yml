@@ -2,12 +2,12 @@
 
 - name: add plex package signing key
   apt_key:
-    id: 521D8275
-    url: http://shell.ninthgate.se/packages/shell.ninthgate.se.gpg.key
+    id: 3ADCA79D
+    url: https://downloads.plex.tv/plex-keys/PlexSign.key
 
-- name: install plex community repository
+- name: install plex repository
   apt_repository:
-    repo: deb http://shell.ninthgate.se/packages/debian jessie main
+    repo: deb https://downloads.plex.tv/repo/deb/ public main
 
 - name: install plex
   package:
