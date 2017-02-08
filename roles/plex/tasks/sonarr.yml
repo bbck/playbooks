@@ -7,11 +7,11 @@
 
 - name: install mono repository
   apt_repository:
-    repo: deb https://download.mono-project.com/repo/debian wheezy main
+    repo: deb http://download.mono-project.com/repo/debian wheezy main
 
 - name: install second mono repository needed for debian 8
   apt_repository:
-    repo: deb https://download.mono-project.com/repo/debian wheezy-libjpeg62-compat main
+    repo: deb http://download.mono-project.com/repo/debian wheezy-libjpeg62-compat main
 
 - name: install mono
   package:
