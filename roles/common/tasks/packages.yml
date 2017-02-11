@@ -16,4 +16,5 @@
     state: latest
   with_items:
     - apt-transport-https
+    - curl
     - vim
