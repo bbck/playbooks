@@ -3,3 +3,4 @@
 - include: proxmox.yml
 - include: gitlab.yml
 - include: plex.yml
+- include: kubernetes.yml
