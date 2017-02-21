@@ -1,0 +1,8 @@
+---
+
+common_enable_backports: false
+
+common_packages:
+  - apt-transport-https
+  - curl
+  - vim

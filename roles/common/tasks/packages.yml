@@ -9,12 +9,10 @@
   apt_repository:
     repo: deb http://debian.csail.mit.edu/debian/ jessie-backports main
     state: present
+  when: "{{ common_enable_backports }}"
 
 - name: install common packages
   package:
     name: "{{ item }}"
     state: latest
-  with_items:
-    - apt-transport-https
-    - curl
-    - vim
+  with_items: "{{ common_packages }}"
