@@ -5,4 +5,5 @@
   become: yes
 
   roles:
+    - common
     - kube-master
