@@ -12,9 +12,9 @@
 - name: install kubernetes packages
   package:
     name: "{{ item }}"
-    state: latest
+    state: present
   with_items:
-    - kubelet
-    - kubeadm
-    - kubectl
-    - kubernetes-cni
+    - kubelet=1.5.2-00
+    - kubeadm=1.6.0-alpha.0-2074-a092d8e0f95f52-00
+    - kubectl=1.5.2-00
+    - kubernetes-cni=0.3.0.1-07a8a2-00
