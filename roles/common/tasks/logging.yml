@@ -1,0 +1,19 @@
+---
+
+- name: download Papertrail root certificates
+  get_url:
+    url: https://papertrailapp.com/tools/papertrail-bundle.pem
+    dest: /etc/papertrail-bundle.pem
+    checksum: md5:ba3b40a34ec33ac0869fa5b17a0c80fc
+
+- name: Enable TLS support in rsyslog
+  apt:
+    name: rsyslog-gnutls
+    state: latest
+
+- name: enable remote logging
+  template:
+    src: papertrail.conf.j2
+    dest: /etc/rsyslog.d/papertrail.conf
+  notify:
+    - restart rsyslog

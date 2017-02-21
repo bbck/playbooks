@@ -6,3 +6,6 @@ common_packages:
   - apt-transport-https
   - curl
   - vim
+
+common_papertrail_host: logs.papertrailapp.com
+common_papertrail_port: "21438"
