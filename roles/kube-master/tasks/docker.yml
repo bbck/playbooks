@@ -7,22 +7,9 @@
 
 - name: install docker repository
   apt_repository:
-    repo: deb https://apt.dockerproject.org/repo/ raspbian-jessie main
-  when: ansible_lsb.id == "Raspbian"
-
-- name: install docker repository
-  apt_repository:
-    repo: deb https://apt.dockerproject.org/repo/ debian-jessie main
-  when: ansible_lsb.id == "Debian"
+    repo: deb https://apt.dockerproject.org/repo/ {{ ansible_lsb.id|lower }}-jessie main
 
 - name: install docker
   package:
-    name: docker-engine=1.12.6-0~raspbian-jessie
+    name: docker-engine=1.12.6-0~{{ ansible_lsb.id|lower }}-jessie
     state: present
-  when: ansible_lsb.id == "Raspbian"
-
-- name: install docker
-  package:
-    name: docker-engine=1.12.6-0~debian-jessie
-    state: present
-  when: ansible_lsb.id == "Debian"
