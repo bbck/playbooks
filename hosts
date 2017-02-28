@@ -13,6 +13,6 @@ rpi-node01.bbck.net
 pve-node01.bbck.net
 
 [docker-swarm]
-docker01.bbck.net
+docker01.bbck.net master=True
 docker02.bbck.net
 docker03.bbck.net

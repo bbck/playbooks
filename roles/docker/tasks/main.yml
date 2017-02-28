@@ -13,3 +13,24 @@
   package:
     name: docker-engine=1.12.6-0~{{ ansible_lsb.id|lower }}-jessie
     state: present
+
+- name: capture docker status
+  shell: docker info | grep '^Swarm' | cut -d ' ' -f 2
+  register: docker_swarm_status
+
+- name: create a swarm
+  command: docker swarm init --advertise-addr {{ ansible_default_ipv4.address }}
+  when:
+    - docker_swarm_status.stdout == "inactive"
+    - master is defined
+
+- name: retrieve join token
+  command: docker swarm join-token -q worker
+  when: master is defined
+  register: docker_swarm_token
+
+- name: join the swarm
+  command: docker swarm join --token {{ hostvars[groups['docker-swarm'][0]]['docker_swarm_token']['stdout'] }} {{ hostvars[groups['docker-swarm'][0]]['ansible_default_ipv4']['address'] }}
+  when:
+    - docker_swarm_status.stdout == "inactive"
+    - master is undefined
