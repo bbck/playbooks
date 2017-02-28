@@ -11,3 +11,8 @@ plex.bbck.net
 rpi-master.bbck.net
 rpi-node01.bbck.net
 pve-node01.bbck.net
+
+[docker-swarm]
+docker01.bbck.net
+docker02.bbck.net
+docker03.bbck.net

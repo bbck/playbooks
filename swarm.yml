@@ -1,0 +1,9 @@
+---
+
+- hosts: docker-swarm
+  remote_user: chris
+  become: yes
+
+  roles:
+    - common
+    - docker
