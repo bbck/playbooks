@@ -2,3 +2,4 @@
 
 - include: plex.yml
 - include: sonarr.yml
+- include: backups.yml

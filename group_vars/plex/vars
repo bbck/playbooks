@@ -1,0 +1,38 @@
+---
+common_enable_backports: true
+
+plex_aws_access_key: "{{ vault_plex_aws_access_key }}"
+plex_aws_secret_key: "{{ vault_plex_aws_secret_key }}"
+plex_gpg_key_fingerprint: 15D6BE97D16A1751D764E55F0A0F7A188B8E5ECC
+plex_gpg_key_passphrase: "{{ vault_plex_gpg_key_passphrase }}"
+plex_gpg_key_public: |
+  -----BEGIN PGP PUBLIC KEY BLOCK-----
+  Version: GnuPG v2
+
+  mQENBFjVyzsBCACfCGDZjkd1yRKr+RDuXTzzTVqNk/YzH1B+6gWheLvmwpxZCEG0
+  hbEpobRsFl3l0rp01ZRta+vJvRnr6GLdLRBoKA6cxFXeuZLPK1kQYwoF3E+t80Tr
+  2a1a1bKE2a+dpF7HotnIScxD1BNQNEbopGMW3BESRlfB5TitYv2WbmAoZnjj6e5T
+  c3b4kyv52zvLfuQURSf0+WrIRE8r8z0WXggBgJov+VQPuant/TF4uVEzSaM4y0py
+  O2KWRTFIk57wBQ7RJbEdNJ6LSy1jPzLxwSLCukQtIq16XgZ4lZZftrKXpYTAlMms
+  Q8sEBidBw3WjJOMvO3aiAlUWD4zMQj0f7YUtABEBAAG0LmR1cGxpY2l0eSAoRHVw
+  bGljaXR5IFMzIGJhY2t1cCBlbmNyeXB0aW9uIGtleSmJATkEEwEIACMFAljVyzsC
+  GwMHCwkIBwMCAQYVCAIJCgsEFgIDAQIeAQIXgAAKCRAKD3oYi45ezCNwB/wLHgaV
+  DacSDeWtjI05ksWd8/hL6P4oS/K6dtfxIs4bUnXxtliU9y9ePvbzapBu4g+L98jz
+  p6VVjI4hLwmp2j/yCyjxXXAvoMGboFkyn9syPme/+pWLYVI1lmfe1O/yNl4sCzNg
+  K2CH13bNlaJuAkj3S/eMlxBW//+31LrK5EoKgEg1w/FtRO2q3fez6EIMFmEiqRZj
+  qzKjWzNLrSAZnfQzwnGTihbXp6BFLY2p0Yqu7uPA0KDWWocHshMCpbtT4zxVOm+I
+  oPLFvqxWgTKkeaL/Nuzye7Tyu9Otftbs8jrT5CEFCx5uLhJ5iCWfxRBijVSpt77A
+  7cHrDCprcpQRowSEuQENBFjVyzsBCADfLUJNrk4GWiLbbFcuEbnR8N36cOaBgfGl
+  PZfG9AN+NcxHcUjkLbQkDKoKpU/1dO2Z2uspS3aR897h2zC7mIeM5FWYa2j8bhpS
+  OxP8Y41n5bLCFhXjlq0MD3AevkrZseLmAaN4KFPSU9lFb4EH0VWWQLsiYoGlfNuR
+  EuvqIN69wmamYoiI5ZDELZdxK7rFVNxPxXs9c+lhhHcc2qQ0t8cDwbWQMRFu0bWB
+  LPVY9i2UaS4al4ZRidMAzhEOElteZpK8jEbIFhhSUnuM1GtUcTRxQJfJUFgOaA9h
+  X0GJbKr/1cRd0hgEnLWWOXuuJCPudi/8kseGtmr9koz7T05LPdStABEBAAGJAR8E
+  GAEIAAkFAljVyzsCGwwACgkQCg96GIuOXsyT4Af/W3ID2x3Jn7oCHAV/I6inr5uL
+  QPrY90z2XGZV2jZ/7c/Bn8dX2Qx4abRCzvXqbOv6MErjfIDFdfk2iHyfOB7MQd3D
+  Qhqct9gfyLatFtvJG+TXJfkLlj9EvkuJO+YCptfDbhupKwk3eLZUkjujv0Ws2C7u
+  zdoBvXmzC4Y/3mxpLxpdSiz/bbzOnNsFH2t1cT4Q7S+TaQFnKZl0ULSnKR4un71h
+  R2BHS8EEqefhnsIsA+pH3rAoywXzAAxndOfqaNPFxo7DlUAIaz8Tzrizq5vvfN3n
+  C8JkbAtRE9rCkfIIUVELYuZthaba8Mny/IiWS0vGKdfpWZYdZJV8XYq0XLQJmg==
+  =3c22
+  -----END PGP PUBLIC KEY BLOCK-----
