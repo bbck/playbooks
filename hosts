@@ -1,11 +1,11 @@
 [proxmox]
-pve.bbck.net
+pve01.bbck.net
 
 [gitlab]
-git.bbck.net
+gitlab01.bbck.net
 
 [plex]
-plex.bbck.net
+pms01.bbck.net
 
 [kube-master]
 rpi-master.bbck.net
