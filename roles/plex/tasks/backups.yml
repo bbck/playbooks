@@ -1,0 +1,50 @@
+---
+
+- name: install duplicity
+  apt:
+    name: "{{ item }}"
+    default_release: jessie-backports
+    state: latest
+  with_items:
+    - duplicity
+    - python-boto
+
+- name: Test if backup key exists
+  command: gpg --list-keys duplicity
+  register: plex_backup_key_result
+  ignore_errors: True
+
+- block:
+  - name: Write out backup GPG public key
+    copy:
+      content: "{{ plex_gpg_key_public }}"
+      dest: "/tmp/duplicity.pub"
+
+  - name: Write gpg trustdb
+    copy:
+      content: "{{ plex_gpg_key_fingerprint }}:6:\n"
+      dest: "/tmp/duplicity.trust"
+
+  - name: Import backup key
+    command: gpg --import /tmp/duplicity.pub
+
+  - name: Trust backup key
+    command: gpg --import-ownertrust /tmp/duplicity.trust
+
+  when: plex_backup_key_result|failed
+
+- name: Write backup secrets
+  template:
+    src: duplicity.j2
+    dest: /root/.duplicity
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Schedule backup
+  copy:
+    src: duplicity.sh
+    dest: /etc/cron.weekly/duplicity
+    owner: root
+    group: root
+    mode: 0744
