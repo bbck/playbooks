@@ -1,0 +1,9 @@
+---
+
+- hosts: proxy
+  remote_user: chris
+  become: yes
+
+  roles:
+    - common
+    - proxy

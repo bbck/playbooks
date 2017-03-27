@@ -1,0 +1,28 @@
+---
+- name: install certbot
+  apt:
+    name: certbot
+    default_release: jessie-backports
+    state: latest
+
+# nginx will complain if the directory with SSL cert doesn't exist, but doesn't
+# care about the file
+- name: Create letsencrypt conf directory
+  file:
+    path: /etc/letsencrypt
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+
+- name: Create cert directory
+  file:
+    path: /etc/letsencrypt/live/pve.bbck.net
+    recurse: yes
+    owner: root
+    group: root
+    mode: 0700
+    state: directory
+
+- include_role:
+    name: jdauphant.nginx

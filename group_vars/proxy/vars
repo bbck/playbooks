@@ -1,0 +1,46 @@
+---
+common_enable_backports: true
+
+nginx_sites:
+  default:
+    - listen 80 default_server
+    - server_name _
+    - return 301 https://$host:443$request_uri
+  git:
+    - listen 443 ssl
+    - server_name git.bbck.net
+    - location / {
+        proxy_pass http://192.168.34.5:80;
+      }
+  k8s:
+    - listen 443 ssl
+    - server_name k8s.bbck.net
+    - location / {
+        proxy_set_header Host $host;
+        proxy_pass http://192.168.34.52:80;
+      }
+  plexpy:
+    - listen 443 ssl
+    - server_name plexpy.bbck.net
+    - location / {
+        proxy_pass http://192.168.34.6:8181;
+      }
+  pve:
+    - listen 443 ssl
+    - server_name pve.bbck.net
+    - location / {
+        proxy_pass https://192.168.34.2:8006;
+      }
+  sonarr:
+    - listen 443 ssl
+    - server_name sonarr.bbck.net
+    - location / {
+        proxy_pass http://192.168.34.6:8989;
+      }
+
+nginx_configs:
+  proxy:
+    - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
+  ssl:
+    - ssl_certificate_key /etc/letsencrypt/live/pve.bbck.net/privkey.pem
+    - ssl_certificate /etc/letsencrypt/live/pve.bbck.net/fullchain.pem
