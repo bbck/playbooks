@@ -1,5 +1,6 @@
 ---
 
 - include: plex.yml
+- include: plexpy.yml
 - include: sonarr.yml
 - include: backups.yml

@@ -1,0 +1,41 @@
+---
+- name: create plexpy service user
+  user:
+    name: plexpy
+    system: yes
+    home: /opt/plexpy
+    state: present
+
+- name: download plexpy
+  unarchive:
+    src: "https://github.com/JonnyWong16/plexpy/archive/v{{ plex_plexpy_version }}.tar.gz"
+    dest: /opt/plexpy
+    owner: plexpy
+    group: plexpy
+    remote_src: yes
+    creates: "/opt/plexpy/plexpy-{{ plex_plexpy_version }}"
+
+- name: link release directory
+  file:
+    src: "/opt/plexpy/plexpy-{{ plex_plexpy_version }}"
+    dest: /opt/plexpy/current
+    owner: plexpy
+    group: plexpy
+    state: link
+  notify:
+    - restart plexpy
+
+- name: copy plexpy init script
+  copy:
+    src: plexpy.service
+    dest: /lib/systemd/system/plexpy.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: start and enable plexpy
+  systemd:
+    name: plexpy
+    daemon_reload: yes
+    enabled: yes
+    state: started
