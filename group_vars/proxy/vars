@@ -18,23 +18,23 @@ nginx_sites:
     - location / {
         proxy_pass http://192.168.34.52:80;
       }
-  plexpy:
+  plex:
     - listen 443 ssl
     - server_name plex.bbck.net
+    - location / {
+        proxy_pass http://192.168.34.6:32400;
+      }
     - location /plexpy {
         proxy_pass http://192.168.34.6:8181;
+      }
+    - location /sonarr {
+        proxy_pass http://192.168.34.6:8989;
       }
   pve:
     - listen 443 ssl
     - server_name pve.bbck.net
     - location / {
         proxy_pass https://192.168.34.2:8006;
-      }
-  sonarr:
-    - listen 443 ssl
-    - server_name plex.bbck.net
-    - location /sonarr {
-        proxy_pass http://192.168.34.6:8989;
       }
 
 nginx_configs:
