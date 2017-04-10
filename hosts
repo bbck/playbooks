@@ -10,7 +10,6 @@ pms01.bbck.net
 [kube-master]
 rpi-master.bbck.net
 rpi-node01.bbck.net
-pve-node01.bbck.net
 
 [docker-swarm]
 docker01.bbck.net master=True
