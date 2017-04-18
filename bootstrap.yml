@@ -1,0 +1,40 @@
+# ansible-playbook -i "node01.bbck.net," --key-file=~/.ssh/default_lxc bootstrap.yml
+---
+
+- hosts: all
+  user: root
+  vars_prompt:
+    - name: "user_password"
+      prompt: user password
+      private: yes
+      confirm: yes
+      encrypt: "sha512_crypt"
+      salt_size: 7
+  tasks:
+    - debug:
+        msg: "Host is {{ ansible_fqdn }}"
+    - debug:
+        msg: "sudo password is {{ user_password }}"
+    - name: Install sudo
+      apt:
+        name: sudo
+        update_cache: yes
+    - name: Create non-root user
+      user:
+        name: chris
+        groups: sudo
+        password: "{{ user_password }}"
+        shell: /bin/bash
+        state: present
+    - name: Add SSH key for non-root user
+      authorized_key:
+        user: chris
+        key: "{{ lookup('file', '/Users/chris/.ssh/default.pub') }}"
+        state: present
+    - name: Delete root authorized key
+      authorized_key:
+        user: root
+        key: ""
+        exclusive: yes
+    - name: Disable root account
+      command: passwd -dl root
