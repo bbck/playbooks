@@ -15,3 +15,6 @@ rpi-node01.bbck.net
 docker01.bbck.net master=True
 docker02.bbck.net
 docker03.bbck.net
+
+[vpn]
+openvpn01.bbck.net
