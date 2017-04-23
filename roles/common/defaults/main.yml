@@ -5,6 +5,7 @@ common_enable_backports: false
 common_packages:
   - apt-transport-https
   - curl
+  - unattended-upgrades
   - vim
 
 common_papertrail_host: logs.papertrailapp.com

@@ -16,3 +16,8 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ common_packages }}"
+
+- name: enable unattended-upgrades
+  copy:
+    src: 20auto-upgrades
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
