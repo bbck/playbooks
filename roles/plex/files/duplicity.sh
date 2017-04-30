@@ -8,12 +8,13 @@ export AWS_SECRET_ACCESS_KEY
 
 GPG_KEY="8B8E5ECC"
 
-duplicity \
+duplicity -v8 \
   --s3-use-ia \
+  --s3-use-new-style \
   --asynchronous-upload \
   --encrypt-key="$GPG_KEY" \
   /var/lib/plexmediaserver \
-  "s3+http://bbck-plex/"
+  "s3://s3.amazonaws.com/bbck-plex"
 
 unset PASSPHRASE
 unset AWS_ACCESS_KEY_ID
