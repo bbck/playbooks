@@ -1,0 +1,61 @@
+---
+- name: install openvpn
+  apt:
+    name: openvpn
+    state: latest
+
+- name: openvpn server config
+  copy:
+    src: server.conf
+    dest: /etc/openvpn/server.conf
+  notify:
+    - restart openvpn
+
+- name: create openvpn log directory
+  file:
+    path: /var/log/openvpn
+    state: directory
+
+- name: enable network forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    state: present
+
+- name: make sure /dev/net exists
+  file:
+    path: /dev/net
+    state: directory
+
+- name: create tun device
+  command: mknod /dev/net/tun c 10 200
+  args:
+    creates: /dev/net/tun
+
+- name: give rw to all users on tun device
+  file:
+    path: /dev/net/tun
+    mode: 0666
+
+- name: create openvpn keys directory
+  file:
+    path: /etc/openvpn/keys
+    state: directory
+    mode: 0700
+
+- name: copy server keys
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/openvpn/keys/{{ item }}"
+    mode: 0600
+  with_items:
+    - ca.crt
+    - server.crt
+    - server.key
+    - dh.pem
+
+- name: start and enable openvpn
+  service:
+    name: openvpn
+    enabled: yes
+    state: started
