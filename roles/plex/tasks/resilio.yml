@@ -1,0 +1,27 @@
+---
+
+- name: add resilio sync package signing key
+  apt_key:
+    id: 2484414B
+    url: https://linux-packages.resilio.com/resilio-sync/key.asc
+
+- name: install resilio sync repository
+  apt_repository:
+    repo: deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free
+
+- name: install resilio sync
+  package:
+    name: resilio-sync
+    state: latest
+
+- name: add plex to rslsync group
+  user:
+    name: plex
+    groups: rslsync
+    append: yes
+
+- name: start and enable resilio sync
+  systemd:
+    name: resilio-sync
+    enabled: yes
+    state: started
