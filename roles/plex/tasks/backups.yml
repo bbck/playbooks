@@ -13,6 +13,7 @@
   command: gpg --list-keys duplicity
   register: plex_backup_key_result
   ignore_errors: True
+  changed_when: False
 
 - block:
   - name: Write out backup GPG public key
