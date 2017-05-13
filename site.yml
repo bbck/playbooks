@@ -5,3 +5,4 @@
 - include: plex.yml
 - include: kubernetes.yml
 - include: swarm.yml
+- include: proxy.yml
