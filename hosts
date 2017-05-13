@@ -1,9 +1,6 @@
 [proxmox]
 pve01.bbck.net
 
-[gitlab]
-gitlab01.bbck.net
-
 [plex]
 pms01.bbck.net
 
