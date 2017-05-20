@@ -13,6 +13,7 @@ duplicity -v8 \
   --s3-use-new-style \
   --asynchronous-upload \
   --encrypt-key="$GPG_KEY" \
+  --exclude /var/lib/plexmediaserver/Sync \
   /var/lib/plexmediaserver \
   "s3://s3.amazonaws.com/bbck-plex"
 
