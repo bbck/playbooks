@@ -6,3 +6,4 @@
 - include: kubernetes.yml
 - include: swarm.yml
 - include: proxy.yml
+- include: vpn.yml
