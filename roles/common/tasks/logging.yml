@@ -17,3 +17,20 @@
     dest: /etc/rsyslog.d/papertrail.conf
   notify:
     - restart rsyslog
+
+- name: install remote_syslog2
+  apt:
+    deb: "https://github.com/papertrail/remote_syslog2/releases/download/v{{ common_remote_syslog2_version }}/remote-syslog2_{{ common_remote_syslog2_version }}_amd64.deb"
+
+- name: configure remote_syslog2
+  template:
+    src: log_files.yml.j2
+    dest: /etc/log_files.yml
+  notify:
+    - restart remote_syslog
+
+- name: ename remote_syslog service
+  service:
+    name: remote_syslog
+    enabled: yes
+    state: started

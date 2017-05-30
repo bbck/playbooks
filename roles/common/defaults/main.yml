@@ -10,3 +10,6 @@ common_packages:
 
 common_papertrail_host: logs.papertrailapp.com
 common_papertrail_port: "21438"
+common_remote_syslog2_version: "0.19"
+common_remote_syslog2_files:
+  - /var/log/unattended-upgrades/*.log

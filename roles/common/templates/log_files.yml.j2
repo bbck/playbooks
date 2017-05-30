@@ -1,0 +1,8 @@
+files:
+{% for file in common_remote_syslog2_files %}
+  - {{ file }}
+{% endfor %}
+destination:
+  host: {{ common_papertrail_host }}
+  port: {{ common_papertrail_port }}
+  protocol: tls
