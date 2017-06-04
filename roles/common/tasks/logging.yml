@@ -29,7 +29,7 @@
   notify:
     - restart remote_syslog
 
-- name: ename remote_syslog service
+- name: enable remote_syslog service
   service:
     name: remote_syslog
     enabled: yes
