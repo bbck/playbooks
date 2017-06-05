@@ -1,6 +1,11 @@
 files:
 {% for file in common_remote_syslog2_files %}
+{% if file.path is defined %}
+  - path: {{ file.path }}
+    tag: {{ file.tag }}
+{% else %}
   - {{ file }}
+{% endif %}
 {% endfor %}
 destination:
   host: {{ common_papertrail_host }}
