@@ -1,5 +1,9 @@
 ---
 common_enable_backports: true
+common_remote_syslog2_files:
+  - /var/log/unattended-upgrades/*.log
+  - path: /var/log/nginx/*.log
+    tag: nginx
 
 nginx_sites:
   default:
